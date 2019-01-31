@@ -15,7 +15,7 @@ class RestaurantController extends Controller
     public function index()
     {
 
-//        return view('restaurant.index', ['restaurants' => $restaurants]);
+        return view('restaurant.index', ['restaurants' => $restaurants]);
     }
 
     /**
