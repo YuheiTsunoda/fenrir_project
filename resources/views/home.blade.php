@@ -15,7 +15,9 @@
             navigator.geolocation.getCurrentPosition(
                 // 取得成功した場合
                 function(position) {
-                    alert("緯度:"+position.coords.latitude+",経度"+position.coords.longitude);
+                    var latitude=position.coords.latitude;
+                    var longtude=position.coords.longitude;
+                    alert("緯度:"+latitude+",経度"+longtude);
                 },
                 // 取得失敗した場合
                 function(error) {
@@ -41,5 +43,7 @@
 <body>
     <h1>位置情報取得サンプル</h1>
     <button onclick="getPosition();">位置情報を取得する</button>
-    </body>
+    <a href="{{action('RestaurantController@index')}}">店舗検索</a>
+</body>
 </html>
+
