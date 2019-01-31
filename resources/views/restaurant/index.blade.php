@@ -14,7 +14,8 @@
 <script>
     function showResult( result ) {
         for ( var i in result.rest ) {
-            $("#table").append("<tr><td>" + result.rest[ i ].name + "</td><td>" + result.rest[ i ].opentime )
+            // 全部最初の候補へ
+            $("#table").append("<tr><td>" + "<a href='{{url('/restaurant/1')}}'>詳細  </a>"+result.rest[ i ].name + "</td><td>" + result.rest[ i ].address )
         }
     }
 
@@ -38,5 +39,6 @@
         })
     })
 </script>
+<a href="{{url('/')}}">戻る</a>
 </body>
 </html>
