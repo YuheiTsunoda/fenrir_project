@@ -12,6 +12,19 @@
 </table>
 
 <script>
+    var lat,lng;
+    navigator.geolocation.getCurrentPosition(
+
+    // [第1引数] 取得に成功した場合の関数
+    function( position ) {
+        // 取得したデータの整理
+        var data = position.coords;
+
+        // データの整理
+        lat = data.latitude;
+        lng = data.longitude;
+    })
+
     function showResult( result ) {
         for ( var i in result.rest ) {
             // 全部最初の候補へ
@@ -26,7 +39,9 @@
             format: "json",
             // 場所がうまく取得できない
             latitude: 34.702492,
+            // latitude: lat,
             longitude: 135.495965,
+            // longitude: lng,
             range: ""
         }
 
