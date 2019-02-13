@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::resource('restaurant', 'RestaurantController');
+
+Route::get('search','RestaurantController@search');
