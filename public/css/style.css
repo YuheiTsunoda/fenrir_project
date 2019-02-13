@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+p{
+    width: 330px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis; /* Opera9,10対応 */
+}
+
+h5{
+    width: 330px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis; /* Opera9,10対応 */
+}
