@@ -17,13 +17,13 @@
 @include('layouts.head')
 @include('layouts.header')
 @section('content')
-    <div class="container">
+    <div class="container mt-5">
         <form action="/restaurant" method="get">
             <div class="form-group">
                 <input type="hidden" name="lat" value="" id="lat" class="form-control">
                 <input type="hidden" name="lng" value="" id="lng" class="form-control">
                 <label for="Input">検索半径</label>
-                <select name="num" id="num" class="custom-select custom-select-lg mb-3">
+                <select name="range" id="range" class="custom-select custom-select-lg mb-3">
                     <option value=1>300m</option>
                     <option value=2>500m</option>
                     <option value=3>1000m</option>

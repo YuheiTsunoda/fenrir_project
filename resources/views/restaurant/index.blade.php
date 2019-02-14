@@ -7,14 +7,10 @@
 @include('layouts.head')
 @include('layouts.header')
 @section('content')
-{{--<p> {{$array[0]->name}} </p>--}}
-{{--<table id="table" border="1">--}}
-    {{--<tr><th>店舗名</th><th>アクセス</th></tr>--}}
-{{--</table>--}}
-{{--<a href="{{url('/search')}}">戻る</a>--}}
 
-<div class="row">
-    @foreach($array as $item)
+<p>{{$array->total_hit_count}}ヒット</p>
+<div class="row mt-5">
+    @foreach($array->rest as $item)
     <div class="card mb-3 mx-auto" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
@@ -23,16 +19,19 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">{{$item->name}}</h5>
-                    <p class="card-text">住所：{{$item->address}}</p>
-                    <p class="card-text">電話番号：{{$item->tel}}</p>
-                    <p class="card-text">営業時間：{{$item->opentime}}</p>
+                    <h5 class="card-title"><a href="/restaurant/{{$item->id}}">{{$item->name}}</a></h5>
+                    <p class="card-text">アクセス：{{$item->access->line}}{{$item->access->station}} {{$item->access->station_exit}} 徒歩{{$item->access->walk}}分</p>
+                    <p class="card-text">備考：{{$item->access->note}}</p>
                 </div>
             </div>
         </div>
     </div>
     @endforeach
+        {{--@if($array->rest->hasPages())--}}
+            {{--{{ $array->rest->links() }}--}}
+        {{--@endif--}}
 </div>
+
 
 @endsection
 @include('layouts.footer')
