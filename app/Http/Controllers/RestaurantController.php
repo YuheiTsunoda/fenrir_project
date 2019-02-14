@@ -6,6 +6,7 @@ use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Restaurant;
 use Illuminate\Support\Facades\Log;
+
 class RestaurantController extends Controller
 {
     /**
@@ -34,7 +35,6 @@ class RestaurantController extends Controller
         $lng = "&longitude=" . $request->input("lng");
 //        rangeの設定。横着してint型の定数を入れています
         $range = "&range=" .$request->input("range");
-//dd($range);
         $hit_per_page ="&hit_per_page=100";
         $ReqURL = $RequestURL.$APIkey.$lat.$lng.$range.$hit_per_page;
         $json=file_get_contents($ReqURL);
