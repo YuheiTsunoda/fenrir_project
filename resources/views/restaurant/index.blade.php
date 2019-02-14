@@ -8,7 +8,7 @@
 @include('layouts.header')
 @section('content')
 
-<p>{{$array->total_hit_count}}ヒット</p>
+<p class="alert alert-light text-left"><i class="fas fa-exclamation-triangle"></i> {{$array->total_hit_count}}店舗ヒットしました</p>
 <div class="row mt-5">
     @foreach($array->rest as $item)
     <div class="card mb-3 mx-auto" style="max-width: 540px;">
@@ -19,9 +19,17 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title"><a href="/restaurant/{{$item->id}}">{{$item->name}}</a></h5>
-                    <p class="card-text">アクセス：{{$item->access->line}}{{$item->access->station}} {{$item->access->station_exit}} 徒歩{{$item->access->walk}}分</p>
-                    <p class="card-text">備考：{{$item->access->note}}</p>
+                    <h5 class="card-title"><a href="/restaurant/{{$item->id}}" class="card-link text-info">{{$item->name}}</a></h5>
+                    @if($item->access->line != null)
+                        <p class="card-text"><i class="fas fa-subway mr-2"></i> {{$item->access->line}}{{$item->access->station}} {{$item->access->station_exit}} 徒歩{{$item->access->walk}}分</p>
+                    @else
+                        <p class="card-text"><i class="fas fa-subway mr-2"></i>   記載なし</p>
+                    @endif
+                    @if($item->access->note != null)
+                        <p class="card-text"><i class="fas fa-pencil-alt mr-2"></i>   {{$item->access->note}}</p>
+                    @else
+                        <p class="card-text"><i class="fas fa-pencil-alt mr-2"></i>   記載なし</p>
+                    @endif
                 </div>
             </div>
         </div>
