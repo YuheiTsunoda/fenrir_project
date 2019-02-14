@@ -15,7 +15,6 @@
 <div class="row mt-5">
         <div class="card mb-3 mx-auto" style="max-width: 640px;">
             <div class="row no-gutters">
-
                 <div class="mx-auto">
                     <?php $src=$obj[0]->image_url->shop_image1 != null ? $obj[0]->image_url->shop_image1 : "https://placehold.jp/240x240.png?text=No Image"?>
                     <img src="{{$src}}" class="card-img-top" alt="...">

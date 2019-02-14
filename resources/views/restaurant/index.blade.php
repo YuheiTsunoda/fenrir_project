@@ -27,20 +27,40 @@
         </div>
     </div>
     @endforeach
+    <?php $maxcount=$array->total_hit_count/10 + 1?>
     <div class="mx-auto">
         <nav aria-label="...">
             <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
+                @if($array->page_offset==1)
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                @else
+                    <li class="page-item">
+                        <a class="page-link" href="{{url()->full()}}&page={{$array->page_offset-1}}">Previous</a>
+                    </li>
+                @endif
+
+                @for($i=$array->page_offset;$i<$array->page_offset+5;$i++)
+                    @if($array->page_offset==$i)
+                            <li class="page-item active" aria-current="page">
+                                <a class="page-link" href="{url()->full()}}&page={{$i}}">{{$i}}<span class="sr-only">(current)</span></a>
+                            </li>
+                    @else
+                            <li class="page-item"><a class="page-link" href="{{url()->full()}}&page={{$i}}">{{$i}}</a></li>
+                    @endif
+                @endfor
+
+                @if($array->page_offset==$maxcount)
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                    </li>
+                @else
+                    <li class="page-item">
+                        <a class="page-link" href="{{url()->full()}}&page={{$array->page_offset+1}}">Next</a>
+                    </li>
+                @endif
+
             </ul>
         </nav>
     </div>

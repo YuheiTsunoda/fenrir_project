@@ -35,8 +35,9 @@ class RestaurantController extends Controller
         $lng = "&longitude=" . $request->input("lng");
 //        rangeの設定。横着してint型の定数を入れています
         $range = "&range=" .$request->input("range");
-        $hit_per_page ="&hit_per_page=100";
-        $ReqURL = $RequestURL.$APIkey.$lat.$lng.$range.$hit_per_page;
+        $page = "&offset_page=" .$request->input("page");
+//        $hit_per_page ="&hit_per_page=10";
+        $ReqURL = $RequestURL.$APIkey.$lat.$lng.$range.$page;
         $json=file_get_contents($ReqURL);
         $obj=json_decode($json);
 //        dd($ReqURL);
